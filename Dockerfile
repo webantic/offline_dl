@@ -13,4 +13,4 @@ ENV PORT=3100
 ENV HOST=http://0.0.0.0
 ENV BOT_URL=
 
-CMD ["node", "index.js"]
+CMD ["npm", "start"]
