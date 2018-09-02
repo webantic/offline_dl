@@ -7,13 +7,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "watch": "tsc -w --preserveWatchOutput -p tsconfig.json",
+    "ts:watch": "tsc -w --preserveWatchOutput -p tsconfig.json",
     "serve": "node --inspect=0.0.0.0:7229 dist/index.js",
     "start": "npm-watch",
     "directline": "node dist/cmdutil.js"
   },
   "watch": {
-    "watch": {
+    "ts:watch": {
       "ignore": "**/*"
     },
     "serve": {

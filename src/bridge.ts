@@ -272,16 +272,36 @@ const createMessageActivity = (incomingActivity: IMessageActivity, serviceUrl: s
     return { ...incomingActivity, channelId: "emulator", serviceUrl: serviceUrl, conversation: { 'id': conversationId }, id: uuidv4() };
 }
 
+function getLocalTimestamp (date) {
+    var tzo = -date.getTimezoneOffset(),
+        dif = tzo >= 0 ? '+' : '-',
+        pad = function(num) {
+            var norm = Math.floor(Math.abs(num));
+            return (norm < 10 ? '0' : '') + norm;
+        };
+    return date.getFullYear() +
+        '-' + pad(date.getMonth() + 1) +
+        '-' + pad(date.getDate()) +
+        'T' + pad(date.getHours()) +
+        ':' + pad(date.getMinutes()) +
+        ':' + pad(date.getSeconds()) +
+        dif + pad(tzo / 60) +
+        ':' + pad(tzo % 60);
+}
+
 const createConversationUpdateActivity = (serviceUrl: string, conversationId: string): IConversationUpdateActivity => {
     const activity: IConversationUpdateActivity = {
         type: 'conversationUpdate',
         channelId: "emulator",
-        serviceUrl: serviceUrl,
+        serviceUrl,
         conversation: { 'id': conversationId },
         id: uuidv4(),
         membersAdded: [],
         membersRemoved: [],
-        from: { 'id': 'offline-directline', 'name': 'Offline Directline Server' }
+        timestamp: new Date().toISOString(),
+        localTimestamp: getLocalTimestamp(new Date()),
+        from: { 'id': 'offline-directline', 'name': 'Offline Directline Server' },
+        recipient: {id: uuidv4(), name: 'Bot', role: 'bot'}
     }
     return activity;
 }

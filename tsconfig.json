@@ -7,6 +7,9 @@
         "noImplicitAny": false,
         "sourceMap": true
     },
+    "include": [
+        "src/**/*"
+    ],
     "files": [
         "src/index.ts",
         "src/bridge.ts",
