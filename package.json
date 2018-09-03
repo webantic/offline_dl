@@ -17,7 +17,9 @@
       "ignore": "**/*"
     },
     "serve": {
-      "patterns": ["dist/**/*"]
+      "patterns": [
+        "dist/**/*"
+      ]
     }
   },
   "types": "dist/bridge.d.ts",
@@ -43,6 +45,6 @@
     "@types/node": "10.5.1",
     "@types/uuid": "3.4.3",
     "npm-watch": "^0.3.0",
-    "typescript": "2.9.2"
+    "typescript": "^3.0.3"
   }
 }
